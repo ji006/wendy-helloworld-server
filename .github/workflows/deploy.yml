@@ -46,7 +46,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           source: "demo-0.0.1-SNAPSHOT.jar"
-          target: "/home/ubuntu/demo-0.0.1-SNAPSHOT"
+          target: "/home/ubuntu"
 
       - name: SSH and run JAR
         uses: appleboy/ssh-action@v1.0.3
@@ -56,4 +56,4 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             pkill -f 'java -jar' || true
-            nohup java -jar /home/ubuntu/demo-0.0.1-SNAPSHOT/demo-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
+            nohup java -jar /home/ubuntu/demo-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
